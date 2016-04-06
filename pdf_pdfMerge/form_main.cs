@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -23,7 +24,7 @@ namespace DMT_pdfMerge
         private int _manualSortMax = 0;
 
         private bool _removeTwo = false;
-        private bool _magic = false;
+        private bool _removeOne = false;
 
         private ImportedGroup PDFfiles;
 
@@ -64,16 +65,19 @@ namespace DMT_pdfMerge
 
                 if (PDFfiles.unsortedList.Count != 0)
                 {
-                    cb_manual.Enabled = true;
                     txt_sortMax.Text = _autoSortMax.ToString();
                     txt_sortMin.Text = _autoSortMin.ToString();
+                    txt_sortMax.Enabled = true;
+                    txt_sortMin.Enabled = true;
+                    cb_minus2.Enabled = true;
+                    cb_minus1.Enabled = true;
                 }
                 else
                 {
-                    cb_manual.Checked = false;
-                    cb_manual.Enabled = false;
-                    cb_minus2.Checked = false;
-                    cb_magic.Enabled = false;
+                    txt_sortMax.Enabled = false;
+                    txt_sortMin.Enabled = false;
+                    cb_minus2.Enabled = false;
+                    cb_minus1.Enabled = false;
                 }
             }
             catch (Exception)
@@ -85,7 +89,7 @@ namespace DMT_pdfMerge
         //import files 
         private void formImport()
         {
-            string[] importedPDFfiles = ImportModule.importFiles(_path);
+            List<string> importedPDFfiles = ImportModule.importFiles(_path);
             PDFfiles = new ImportedGroup(importedPDFfiles);
             _autoSortMax = PDFfiles.findAutoSortValue(_removeTwo);
             outputPreviewImported();
@@ -117,80 +121,17 @@ namespace DMT_pdfMerge
 
             foreach (GroupedFiles sortedSubList in PDFfiles.sortedList)
             {
+                string fileName = sortedSubList.generateGroupName(_removeOne, _removeTwo);
+                txt_sorted.AppendText(fileName + Environment.NewLine);
                 foreach (ImportedFile sortedPDF in sortedSubList.group)
                 {
-                    txt_sorted.AppendText(sortedPDF.fileName + Environment.NewLine);
+                    txt_sorted.AppendText("      -      " + sortedPDF.fileName + Environment.NewLine);
                 }
-                txt_sorted.AppendText("--------------" + Environment.NewLine);
+                txt_sorted.AppendText(Environment.NewLine);
             }
         }
 
-        //manual checkbox
-        private void cb_manual_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_manual.Checked == true)
-            {
-                txt_sortMax.Enabled = true;
-                txt_sortMin.Enabled = true;
-                btn_manual.Enabled = true;
-                cb_minus2.Enabled = true;
-                cb_magic.Enabled = true;
-            }
-            else
-            {
-                txt_sortMax.Enabled = false;
-                txt_sortMin.Enabled = false;
-                btn_manual.Enabled = false;
-                cb_minus2.Enabled = false;
-                cb_magic.Enabled = false;
-            }
-        }
-
-        //check manual sort values
-        private void txt_sortMax_TextChanged(object sender, EventArgs e)
-        {
-            int newManualMax;
-            int.TryParse(txt_sortMax.Text, out newManualMax);
-
-            if (newManualMax > _autoSortMax+5)
-            {
-                _manualSortMax = _autoSortMax;
-                txt_sortMax.Text = _manualSortMax.ToString();
-            }
-            else if (newManualMax < _autoSortMin)
-            {
-                _manualSortMax = _autoSortMax;
-                txt_sortMax.Text = _manualSortMax.ToString();
-            }
-            else
-            {
-                _manualSortMax = newManualMax;
-            }
-        }
-
-        //check manual sort values
-        private void txt_sortMin_TextChanged(object sender, EventArgs e)
-        {
-            int newManualMin;
-            int.TryParse(txt_sortMin.Text, out newManualMin);
-            if (newManualMin >= _manualSortMax)
-            {
-                _manualSortMin = _autoSortMin;
-                txt_sortMin.Text = _manualSortMin.ToString();
-            }
-            else if (newManualMin <= _autoSortMin)
-            {
-                _manualSortMin = _autoSortMin;
-                txt_sortMin.Text = _manualSortMin.ToString();
-            }
-            else
-            {
-                _manualSortMin = newManualMin;
-            }
-        }
-
-        //manual sorting button
-        private void btn_manual_Click(object sender, EventArgs e)
+        private void trySort()
         {
             try
             {
@@ -204,7 +145,71 @@ namespace DMT_pdfMerge
                 txt_sortMin.Text = _manualSortMin.ToString();
                 txt_sortMax.Text = _manualSortMax.ToString();
             }
+        }
 
+        //check manual sort values
+        private void txt_sortMax_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_sortMax.Enabled == true)
+            {
+                int newManualMax;
+                int.TryParse(txt_sortMax.Text, out newManualMax);
+
+                if (newManualMax > _autoSortMax + 5)
+                {
+                    _manualSortMax = _autoSortMax;
+                    txt_sortMax.Text = _manualSortMax.ToString();
+                }
+                else if (newManualMax < _autoSortMin)
+                {
+                    _manualSortMax = _autoSortMax;
+                    txt_sortMax.Text = _manualSortMax.ToString();
+                }
+                else
+                {
+                    _manualSortMax = newManualMax;
+                }
+
+                trySort();
+            }
+        }
+
+        //check manual sort values
+        private void txt_sortMin_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_sortMin.Enabled == true)
+            {
+                int newManualMin;
+                int.TryParse(txt_sortMin.Text, out newManualMin);
+                if (newManualMin >= _manualSortMax)
+                {
+                    _manualSortMin = _autoSortMin;
+                    txt_sortMin.Text = _manualSortMin.ToString();
+                }
+                else if (newManualMin <= _autoSortMin)
+                {
+                    _manualSortMin = _autoSortMin;
+                    txt_sortMin.Text = _manualSortMin.ToString();
+                }
+                else
+                {
+                    _manualSortMin = newManualMin;
+                }
+
+                trySort();
+            }
+        }
+
+        private void cb_minus2_CheckedChanged(object sender, EventArgs e)
+        {
+            _removeTwo = cb_minus2.Checked;
+            trySort();
+        }
+
+        private void cb_minus1_CheckedChanged(object sender, EventArgs e)
+        {
+            _removeOne = cb_minus1.Checked;
+            trySort();
         }
 
         //print button
@@ -213,23 +218,13 @@ namespace DMT_pdfMerge
             try
             {
                 string mergePath = _path + _merge;
-                ExportModule.exportFiles(PDFfiles.sortedList, mergePath, _removeTwo, _magic);
+                ExportModule.exportFiles(PDFfiles.sortedList, mergePath, _removeOne, _removeTwo);
                 MessageBox.Show("OK");
             }
             catch (Exception)
             {
                 MessageBox.Show("Viga failide kirjutamisel");
             }
-        }
-
-        private void cb_minus2_CheckedChanged(object sender, EventArgs e)
-        {
-            _removeTwo = cb_minus2.Checked;
-        }
-
-        private void cb_magic_CheckedChanged(object sender, EventArgs e)
-        {
-            _magic = cb_magic.Checked;
         }
     }
 }

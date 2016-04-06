@@ -105,11 +105,11 @@ namespace DMT_pdfMerge
             return null;
         }
 
-        internal string generateGroupName(bool removeTwo, bool magic)
+        internal string generateGroupName(bool removeOne, bool removeTwo)
         {
             int key = findNameKey(removeTwo);
 
-            if (magic)
+            if (removeOne)
             {
                 key = key - 1;
             }

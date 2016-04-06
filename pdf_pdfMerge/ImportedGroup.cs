@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,7 +8,7 @@ namespace DMT_pdfMerge
 {
     public class ImportedGroup
     {
-        public ImportedGroup(string[] filePaths)
+        public ImportedGroup(List<string> filePaths)
         {
             _unsortedList = convertFiles(filePaths);
         }
@@ -26,7 +27,7 @@ namespace DMT_pdfMerge
             set { _sortedList = value; }
         }
 
-        private ArrayList convertFiles(string[] filePaths)
+        private ArrayList convertFiles(List<string> filePaths)
         {
             ArrayList convertedFiles = new ArrayList();
 

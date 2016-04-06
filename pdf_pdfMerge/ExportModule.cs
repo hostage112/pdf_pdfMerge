@@ -13,7 +13,7 @@ namespace DMT_pdfMerge
 {
     static class ExportModule
     {
-        public static void exportFiles(ArrayList sortedList, string path, bool removeTwo, bool magic)
+        public static void exportFiles(ArrayList sortedList, string path, bool removeOne, bool removeTwo)
         {
             if (!System.IO.Directory.Exists(path) && sortedList.Count > 0)
             {
@@ -24,15 +24,15 @@ namespace DMT_pdfMerge
             {
                 string filePath;
                 PdfDocument mergedPDF = mergeSubList(group.group);
-                filePath = generatePath(group, path, removeTwo, magic);
+                filePath = generatePath(group, path, removeOne, removeTwo);
                 mergedPDF.Save(filePath);
             }
         }
 
-        static private string generatePath(GroupedFiles group, string path, bool removeTwo, bool magic)
+        static private string generatePath(GroupedFiles group, string path, bool removeOne, bool removeTwo)
         {
             int addon = 0;
-            string fileName = group.generateGroupName(removeTwo, magic);
+            string fileName = group.generateGroupName(removeOne, removeTwo);
             string filePath = path + fileName + ".pdf";
 
             while (File.Exists(filePath))
