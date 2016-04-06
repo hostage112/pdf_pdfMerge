@@ -22,7 +22,6 @@ C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\PdfS
 C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\PdfSharp.Charting.xml
 C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\de\PdfSharp.resources.dll
 C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\de\PdfSharp.Charting.resources.dll
-C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\pdf_pdfMerge.csprojResolveAssemblyReference.cache
 C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\DMT_pdfMerge.form_main.resources
 C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\DMT_pdfMerge.Properties.Resources.resources
 C:\Users\aleksandr.ess\Documents\GitHub\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\pdf_pdfMerge.csproj.GenerateResource.Cache

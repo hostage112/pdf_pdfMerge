@@ -66,7 +66,9 @@ namespace DMT_pdfMerge
                 if (PDFfiles.unsortedList.Count != 0)
                 {
                     txt_sortMax.Text = _autoSortMax.ToString();
+                    _manualSortMax = _autoSortMax;
                     txt_sortMin.Text = _autoSortMin.ToString();
+                    _manualSortMin = _autoSortMin;
                     txt_sortMax.Enabled = true;
                     txt_sortMin.Enabled = true;
                     cb_minus2.Enabled = true;
