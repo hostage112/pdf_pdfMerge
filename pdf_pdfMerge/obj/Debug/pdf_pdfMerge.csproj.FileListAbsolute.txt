@@ -1,0 +1,15 @@
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\DMT_pdfMerge.exe.config
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\DMT_pdfMerge.exe
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\DMT_pdfMerge.pdb
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\pdf_pdfMerge.csprojResolveAssemblyReference.cache
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\DMT_pdfMerge.form_main.resources
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\DMT_pdfMerge.Properties.Resources.resources
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\obj\Debug\pdf_pdfMerge.csproj.GenerateResource.Cache
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\DMT_pdfMerge.exe
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\DMT_pdfMerge.pdb
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\PdfSharp.Charting.dll
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\PdfSharp.dll
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\PdfSharp.xml
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\PdfSharp.Charting.xml
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\aleksandr.ess\Dropbox\CODE\pdf_pdfMerge\pdf_pdfMerge\bin\Debug\de\PdfSharp.Charting.resources.dll
